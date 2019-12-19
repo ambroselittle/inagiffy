@@ -28,7 +28,7 @@ export const GiphyList = () => {
             <InfiniteList
                 isLoading={isLoading}
                 isLoadingMore={isLoadingNextPage}
-                loadingText="finding your giphies..."
+                loadingText="Finding your giphies..."
                 renderItem={item => <Giphy key={item.id} data={item} />}
                 items={items}
                 onReachedBottom={() => dispatch(loadNextPage())}
