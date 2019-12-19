@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { Header } from "semantic-ui-react";
 
-import { loadTrending, searchGiphy } from "./giphyListSlice";
+import "./GiphyList.css";
+import { loadTrending, searchGiphy, loadNextPage } from "./giphyListSlice";
 import { InfiniteList } from "components/InfiniteList";
 import { Giphy } from './Giphy';
 import { GiphyDetail } from './GiphyDetail';
@@ -10,7 +12,7 @@ import { GiphyDetail } from './GiphyDetail';
 export const GiphyList = () => {
     const dispatch = useDispatch();
     const { searchText, offset } = useSelector(state => state.giphies.criteria);
-    const { items, isLoading } = useSelector(state => state.giphies);
+    const { items, isLoading, isLoadingNextPage, totalMatches } = useSelector(state => state.giphies);
 
     useEffect(() => {
         if (searchText === '') {
@@ -25,10 +27,13 @@ export const GiphyList = () => {
         <>
             <InfiniteList
                 isLoading={isLoading}
+                isLoadingMore={isLoadingNextPage}
                 loadingText="finding your giphies..."
                 renderItem={item => <Giphy key={item.id} data={item} />}
                 items={items}
+                onReachedBottom={() => dispatch(loadNextPage())}
             />
+            {items.length > 0 && items.length >= totalMatches && <Header className="end-of-list">That's all folks!</Header>}
             <GiphyDetail />
         </>
     );
