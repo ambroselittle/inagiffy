@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { GiphyApi } from "./lib/GiphyApi";
+import { GiphyApi } from "../lib/GiphyApi";
 
 const PAGE_SIZE = 25;
 
@@ -12,38 +12,37 @@ const giphies = createSlice({
         },
         totalItemCount: 0,
         items: [],
-        loading: false,
+        isLoading: false,
         loadFailed: false,
     },
     reducers: {
         search: (state, action) => {
-            console.log(action)
             state.criteria.searchText = action.payload;
             state.criteria.offset = 0;
-            state.loading = true;
+            state.isLoading = true;
         },
         clearSearch: (state, action) => {
             state.criteria.searchText = '';
             state.criteria.offset = 0;
-            state.loading = true;
+            state.isLoading = true;
         },
         loadNextPage: (state, action) => {
             state.criteria.offset += PAGE_SIZE;
-            state.loading = true;
+            state.isLoading = true;
         },
         showTrending: (state, action) => {
             state.criteria.offset = 0;
-            state.loading = true;
+            state.isLoading = true;
         },
         giphiesLoaded: (state, action) => {
             state.loadFailed = false;
-            state.loading = false;
+            state.isLoading = false;
             state.totalItemCount = action.payload.totalItemCount;
             state.items = action.payload.items;
         },
         giphiesLoadError: (state, action) => {
             state.loadFailed = true;
-            state.loading = false;
+            state.isLoading = false;
             console.error('Problem loading giphies:', action.payload);
             state.items = [];
         },

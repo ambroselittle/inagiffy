@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import giphiesReducer from "./giphySlice";
+import giphiesReducer from "./giphyList/giphyListSlice";
 
 const rootReducer = combineReducers({
     giphies: giphiesReducer,
