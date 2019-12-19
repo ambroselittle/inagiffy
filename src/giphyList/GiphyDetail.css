@@ -1,0 +1,8 @@
+.ui.modal.giphy-detail {
+    width: 90vw;
+    height: 90vh;
+    background-color: transparent;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}

@@ -12,6 +12,7 @@ const giphies = createSlice({
         },
         totalItemCount: 0,
         items: [],
+        detailGiphy: null,
         isLoading: false,
         loadFailed: false,
     },
@@ -46,10 +47,24 @@ const giphies = createSlice({
             console.error('Problem loading giphies:', action.payload);
             state.items = [];
         },
+        showDetail: (state, action) => {
+            state.detailGiphy = action.payload;
+        },
+        hideDetail: (state, action) => {
+            state.detailGiphy = null;
+        },
     }
 })
 
-export const { search, clearSearch, showTrending, giphiesLoaded, giphiesLoadError } = giphies.actions;
+export const {
+    search,
+    clearSearch,
+    showTrending,
+    giphiesLoaded,
+    giphiesLoadError,
+    showDetail,
+    hideDetail
+} = giphies.actions;
 
 export default giphies.reducer;
 

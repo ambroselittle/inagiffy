@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { loadTrending, searchGiphy } from "./giphyListSlice";
 import { InfiniteList } from "components/InfiniteList";
+import { Giphy } from './Giphy';
+import { GiphyDetail } from './GiphyDetail';
+
 
 export const GiphyList = () => {
     const dispatch = useDispatch();
@@ -19,13 +22,14 @@ export const GiphyList = () => {
 
 
     return (
-        <InfiniteList
-            isLoading={isLoading}
-            renderItem={item => (
-                <img key={item.id} src={item.images.fixed_height_still.url} />
-            )}
-            items={items}
-        />
+        <>
+            <InfiniteList
+                isLoading={isLoading}
+                renderItem={item => <Giphy key={item.id} data={item} />}
+                items={items}
+            />
+            <GiphyDetail />
+        </>
     );
 }
 
