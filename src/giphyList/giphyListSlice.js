@@ -13,7 +13,7 @@ const giphies = createSlice({
         totalItemCount: 0,
         items: [],
         detailGiphy: null,
-        isLoading: false,
+        isLoading: true,
         loadFailed: false,
     },
     reducers: {

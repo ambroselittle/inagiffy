@@ -25,6 +25,7 @@ export const GiphyList = () => {
         <>
             <InfiniteList
                 isLoading={isLoading}
+                loadingText="finding your giphies..."
                 renderItem={item => <Giphy key={item.id} data={item} />}
                 items={items}
             />
