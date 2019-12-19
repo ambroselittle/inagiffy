@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+
 import './App.css';
+import { InfiniteList } from "./components/InfiniteList";
+import { loadTrending, search, searchGiphy } from "./giphySlice";
+
 
 function App() {
+  const [searchBoxText, setSearchBoxText] = useState('');
+
+  const dispatch = useDispatch();
+  const { searchText, offset } = useSelector(state => state.giphies.criteria);
+  const items = useSelector(state => state.giphies.items);
+  const isLoading = useSelector(state => state.giphies.loading);
+
+  useEffect(() => {
+    if (searchText === '') {
+      dispatch(loadTrending(offset));
+    } else {
+      dispatch(searchGiphy(searchText, offset));
+    }
+  }, [searchText, offset, dispatch]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="searchBar">
+        <input type="text" value={searchBoxText} onChange={(e) => setSearchBoxText(e.target.value)} /><button onClick={() => dispatch(search(searchBoxText))}>Search</button>
+      </div>
+      <InfiniteList
+        items={items}
+        isLoading={isLoading}
+        renderItem={item => (
+          <img key={item.id} src={item.images.fixed_height_still.url} />
+        )}
+      />
     </div>
   );
 }
