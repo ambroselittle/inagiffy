@@ -15,12 +15,12 @@ describe('GIPHY API Tests', () => {
         })
 
         it('should accept and use numeric offset', async () => {
-            fetchMock.get('https://api.giphy.com/v1/gifs/trending?api_key=&limit=25&offset=23&rating=G', expectedResponse);
+            fetchMock.get('https://api.giphy.com/v1/gifs/trending?api_key=myTestApiKey&limit=25&offset=23&rating=G', expectedResponse);
             expect(async () => await api.getTrending(23)).not.toThrow();
         })
 
         it('should return a list of trending items', async () => {
-            fetchMock.get('https://api.giphy.com/v1/gifs/trending?api_key=&limit=25&offset=0&rating=G', expectedResponse);
+            fetchMock.get('https://api.giphy.com/v1/gifs/trending?api_key=myTestApiKey&limit=25&offset=0&rating=G', expectedResponse);
             const actual = await api.getTrending();
             expect(actual).toEqual(expectedResponse);
         })
@@ -37,12 +37,12 @@ describe('GIPHY API Tests', () => {
 
         it('should accept and use expected params', async () => {
             // query-string seems to alphabetize the params, and they have to match in order the stringified url for fetchMock
-            fetchMock.get(`https://api.giphy.com/v1/gifs/search?api_key=&lang=en&limit=25&offset=${offset}&q=${searchText}&rating=G`, expectedResponse);
+            fetchMock.get(`https://api.giphy.com/v1/gifs/search?api_key=myTestApiKey&lang=en&limit=25&offset=${offset}&q=${searchText}&rating=G`, expectedResponse);
             await expect(api.search(searchText, offset)).resolves.not.toThrow();
         })
 
         it('should return a list of trending items', async () => {
-            fetchMock.get(`https://api.giphy.com/v1/gifs/search?api_key=&lang=en&limit=25&offset=0&q=${searchText}&rating=G`, expectedResponse);
+            fetchMock.get(`https://api.giphy.com/v1/gifs/search?api_key=myTestApiKey&lang=en&limit=25&offset=0&q=${searchText}&rating=G`, expectedResponse);
             const actual = await api.search(searchText);
             expect(actual).toEqual(expectedResponse);
         })
