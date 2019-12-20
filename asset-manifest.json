@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/inagiffy/static/css/main.fd29f3c0.chunk.css",
+    "main.js": "/inagiffy/static/js/main.66a677f4.chunk.js",
+    "main.js.map": "/inagiffy/static/js/main.66a677f4.chunk.js.map",
+    "runtime-main.js": "/inagiffy/static/js/runtime-main.8b423331.js",
+    "runtime-main.js.map": "/inagiffy/static/js/runtime-main.8b423331.js.map",
+    "static/js/2.67a122d9.chunk.js": "/inagiffy/static/js/2.67a122d9.chunk.js",
+    "static/js/2.67a122d9.chunk.js.map": "/inagiffy/static/js/2.67a122d9.chunk.js.map",
+    "index.html": "/inagiffy/index.html",
+    "precache-manifest.88aaea5e1864a7c0d1be0958b45d28d3.js": "/inagiffy/precache-manifest.88aaea5e1864a7c0d1be0958b45d28d3.js",
+    "service-worker.js": "/inagiffy/service-worker.js",
+    "static/css/main.fd29f3c0.chunk.css.map": "/inagiffy/static/css/main.fd29f3c0.chunk.css.map",
+    "static/js/2.67a122d9.chunk.js.LICENSE": "/inagiffy/static/js/2.67a122d9.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8b423331.js",
+    "static/js/2.67a122d9.chunk.js",
+    "static/css/main.fd29f3c0.chunk.css",
+    "static/js/main.66a677f4.chunk.js"
+  ]
+}
