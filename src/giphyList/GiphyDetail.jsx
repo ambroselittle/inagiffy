@@ -23,7 +23,7 @@ export const GiphyDetail = () => {
             {detailGiphy &&
                 <div className="giphy-detail-image-container">
                     <Image
-                        src={detailGiphy.images.original.webp}
+                        src={detailGiphy.images.original.url}
                     />
                 </div>
             }
